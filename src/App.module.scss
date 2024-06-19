@@ -1,0 +1,17 @@
+body {
+	margin: 100px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #787878;
+}
+
+.app_container {
+	height: 100%;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		width: 500px;
+	}
+}
