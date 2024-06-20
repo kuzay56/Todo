@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Button from '../Button/Button'
 
 import styles from './TodoPanel.module.scss'
 
@@ -44,7 +45,7 @@ const TodoPanel = () => {
 				</div>
 			</div>
 			<div className={styles.button_container}>
-				<button>ADD</button>
+				<Button color='blue'>ADD</Button>
 			</div>
 		</div>
 	)

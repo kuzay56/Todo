@@ -18,6 +18,9 @@ const DEFAULT_TODO_LIST = [
 
 function App() {
 	const [todos, setTodos] = React.useState(DEFAULT_TODO_LIST)
+
+	const addTodo = ({ name, description }: Omit<Todo, ''>) => {}
+
 	return (
 		<div className={styles.app_container}>
 			<div className={styles.container}>
