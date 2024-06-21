@@ -49,20 +49,17 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
 		)
 	}
 
-	// const changeTodo = ({
-	// 	name,
-	// 	description,
-	// }: Omit<TodoContext, 'id' | 'checked'>) => {
-	// 	setTodos(
-	// 		todos.map(todo => {
-	// 			if (todo.id === todoIdForEdit) {
-	// 				return { ...todo, name, description }
-	// 			}
-	// 			return todo
-	// 		})
-	// 	)
-	// 	setTodoIdForEdit(null)
-	// }
+	const changeTodo = ({ name, description }: Omit<Todo, 'id' | 'checked'>) => {
+		setTodos(
+			todos.map(todo => {
+				if (todo.id === todoIdForEdit) {
+					return { ...todo, name, description }
+				}
+				return todo
+			})
+		)
+		setTodoIdForEdit(null)
+	}
 
 	const value = React.useMemo(
 		() => ({

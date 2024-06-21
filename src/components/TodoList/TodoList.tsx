@@ -1,12 +1,13 @@
 import React from 'react'
 
-import { useTodo } from '../../utils/contextes/useTodo'
+import { useTodo } from '../../Hook/useTodo'
 
 import TodoItem from './TodoItem/TodoItem'
 import TodoPanel from '../TodoPanel/TodoPanel'
 
 export const TodoList: React.FC = () => {
-	const {todos,todoIdForEdit , checkTodo, deleteTodo, selectTodoIdForEdit} = useTodo()
+	const { todos, todoIdForEdit, checkTodo, deleteTodo, selectTodoIdForEdit } =
+		useTodo()
 
 	return (
 		<div>
@@ -29,9 +30,9 @@ export const TodoList: React.FC = () => {
 						selectTodoIdForEdit={selectTodoIdForEdit}
 					/>
 				)
-			}}
+			})}
 		</div>
-		)
+	)
 }
 
 export default TodoList

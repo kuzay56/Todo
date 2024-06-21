@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 
 import styles from './TodoPanel.module.scss'
-import { useTodo } from '../../utils/contextes/useTodo'
+import { useTodo } from '../../Hook/useTodo'
 
 const DEFAULT_TODO = {
 	name: '',
