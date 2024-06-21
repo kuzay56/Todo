@@ -10,11 +10,12 @@ export interface TodoContextProps {
 	addTodo: ({ name, description }: Omit<Todo, 'checked' | 'id'>) => void
 }
 
-export const TodoContext: React.createContext<TodoContextProps> = ({ todos: []
-	idForEdit: null
-	addTodo: () => {}
-	deleteTodo: () => {}
-	checkTodo: () => {}
-	changeTodo: () => {}
-	selectTodoIdForEdit: () => {}
- }) 
+export const TodoContext = React.createContext<TodoContextProps>({
+	todos: [],
+	todoIdForEdit: null,
+	changeTodo: () => {},
+	addTodo: () => {},
+	deleteTodo: () => {},
+	checkTodo: () => {},
+	selectTodoIdForEdit: () => {},
+})

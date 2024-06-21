@@ -1,26 +1,23 @@
 import React from 'react'
+
 import Header from './components/Header/Header'
 import TodoPanel from './components/TodoPanel/TodoPanel'
 import TodoList from './components/TodoList/TodoList'
+import { TodoProvider } from './utils'
 
 import styles from './App.module.scss'
 
 function App() {
 	return (
-		<div className={styles.app_container}>
-			<div className={styles.container}>
-				<Header todoCount={todos.length} />
-				<TodoPanel mode='add' addTodo={addTodo} />
-				<TodoList
-					todos={todos}
-					todoIdForEdit={todoIdForEdit}
-					checkTodo={checkTodo}
-					deleteTodo={deleteTodo}
-					selectTodoIdForEdit={selectTodoIdForEdit}
-					changeTodo={changeTodo}
-				/>
+		<TodoProvider>
+			<div className={styles.app_container}>
+				<div className={styles.container}>
+					<Header />
+					<TodoPanel mode='add' />
+					<TodoList />
+				</div>
 			</div>
-		</div>
+		</TodoProvider>
 	)
 }
 

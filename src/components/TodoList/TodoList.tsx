@@ -1,24 +1,13 @@
 import React from 'react'
+
+import { useTodo } from '../../utils/contextes/useTodo'
+
 import TodoItem from './TodoItem/TodoItem'
 import TodoPanel from '../TodoPanel/TodoPanel'
 
-interface TodoListProps {
-	todos: Todo[]
-	todoIdForEdit: Todo['id'] | null
-	changeTodo: ({ name, description }: Omit<Todo, 'checked' | 'id'>) => void
-	checkTodo: (id: Todo['id']) => void
-	deleteTodo: (id: Todo['id']) => void
-	selectTodoIdForEdit: (id: Todo['id']) => void
-}
+export const TodoList: React.FC = () => {
+	const {todos,todoIdForEdit , checkTodo, deleteTodo, selectTodoIdForEdit} = useTodo()
 
-const TodoList: React.FC<TodoListProps> = ({
-	todos,
-	checkTodo,
-	changeTodo,
-	deleteTodo,
-	selectTodoIdForEdit,
-	todoIdForEdit,
-}) => {
 	return (
 		<div>
 			{todos.map(todo => {
@@ -28,7 +17,6 @@ const TodoList: React.FC<TodoListProps> = ({
 							key={todo.id}
 							mode='edit'
 							editTodo={{ name: todo.name, description: todo.description }}
-							changeTodo={changeTodo}
 						/>
 					)
 
@@ -41,9 +29,9 @@ const TodoList: React.FC<TodoListProps> = ({
 						selectTodoIdForEdit={selectTodoIdForEdit}
 					/>
 				)
-			})}
+			}}
 		</div>
-	)
+		)
 }
 
 export default TodoList

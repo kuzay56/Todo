@@ -27,7 +27,11 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
 		setTodoIdForEdit(id)
 	}
 
-	const addTodo = ({ name, description }: Omit<Todo, 'checked' | 'id'>) => {
+	const deleteTodo = (id: Todo['id']) => {
+		setTodos(todos.filter(todo => todo.id !== id))
+	}
+
+	const addTodo = ({ name, description }: Omit<Todo, 'id' | 'checked'>) => {
 		setTodos([
 			...todos,
 			{ id: todos[todos.length - 1].id + 1, description, name, checked: false },
@@ -45,40 +49,40 @@ export const TodoProvider: React.FC<TodoProviderProps> = ({ children }) => {
 		)
 	}
 
-	const deleteTodo = (id: Todo['id']) => {
-		setTodos(todos.filter(todo => todo.id !== id))
-	}
+	// const changeTodo = ({
+	// 	name,
+	// 	description,
+	// }: Omit<TodoContext, 'id' | 'checked'>) => {
+	// 	setTodos(
+	// 		todos.map(todo => {
+	// 			if (todo.id === todoIdForEdit) {
+	// 				return { ...todo, name, description }
+	// 			}
+	// 			return todo
+	// 		})
+	// 	)
+	// 	setTodoIdForEdit(null)
+	// }
 
-	const changeTodo = ({ name, description }: Omit<Todo, 'checked' | 'id'>) => {
-		setTodos(
-			todos.map(todo => {
-				if (todo.id === todoIdForEdit) {
-					return { ...todo, name, description }
-				}
-				return todo
-			})
-		)
-		setTodoIdForEdit(null)
-	}
 	const value = React.useMemo(
 		() => ({
+			selectTodoIdForEdit,
+			addTodo,
+			checkTodo,
+			deleteTodo,
+			changeTodo,
 			todoIdForEdit,
 			todos,
-			changeTodo,
-			deleteTodo,
-			checkTodo,
-			addTodo,
-			selectTodoIdForEdit,
 		}),
 		[
+			selectTodoIdForEdit,
+			addTodo,
+			checkTodo,
+			deleteTodo,
+			changeTodo,
 			todoIdForEdit,
 			todos,
-			changeTodo,
-			deleteTodo,
-			checkTodo,
-			addTodo,
-			selectTodoIdForEdit,
 		]
 	)
-	return <TodoContex.Provider value={value}> {children} </TodoContex.Provider>
+	return <TodoContext.Provider value={value}> {children} </TodoContext.Provider>
 }
